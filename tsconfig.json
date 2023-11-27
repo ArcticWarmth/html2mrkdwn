@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "target": "es5",                          
+      "module": "ESNext",  
+      "lib": ["ES5", "DOM", "ES2015", "ES2015.Collection"],
+      "declaration": true,
+      "outDir": "lib/mjs",                   
+      "strict": false,
+      "moduleResolution": "Node",
+      "esModuleInterop": true,                  
+      "forceConsistentCasingInFileNames": true  
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "lib"]                        
+}
+  

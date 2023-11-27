@@ -1,0 +1,38 @@
+{
+  "name": "html2mrkdwn",
+  "version": "0.1.0",
+  "description": "Convert HTML code to mrkdwn for Slack messages",
+  "main": "lib/cjs/index.js",
+  "module": "lib/mjs/index.js",
+  "types": "lib/cjs/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArcticWarmth/html2mrkdwn.git"
+  },
+  "scripts": {
+    "build": "rm -rf lib/* && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
+    "link": "sudo npm link",
+    "package": "npm pack"
+  },
+  "bugs": {
+    "url": "https://github.com/ArcticWarmth/html2mrkdwn/issues"
+  },
+  "keywords": [
+    "slack",
+    "html",
+    "mrkdwn"
+  ],
+  "author": "ArcticWarmth",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "eslint": "^8.54.0"
+  }
+}
