@@ -16,7 +16,7 @@ export class html2mrkdwn {
      * @param html HTML code
      * @returns converted HTML to Slack Mrkdwn
      */
-    public static convert(html: string): string {
+    public static convert(html: string, removeOtherTags: boolean): string {
 
         let converted:string = "";
 
@@ -62,6 +62,11 @@ export class html2mrkdwn {
         // Parse Links
         converted = converted.replace(/<a href="(.*)">(.*)<\/a>/g, "<$1|$2>");
 
+        if(removeOtherTags) {
+            // Remove all other tags
+            converted = converted.replace(/<(.*)>/g, "");
+            converted = converted.replace(/<\/(.*)>/g, "");
+        }
 
 
         return converted;
