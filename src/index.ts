@@ -14,6 +14,7 @@ export class html2mrkdwn {
      * 
      * @static
      * @param html HTML code
+     * @param removeOtherTags Remove all tags that are not supported by Slack Mrkdwn
      * @returns converted HTML to Slack Mrkdwn
      */
     public static convert(html: string, removeOtherTags: boolean): string {
