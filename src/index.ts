@@ -65,8 +65,7 @@ export class html2mrkdwn {
 
         if(removeOtherTags) {
             // Remove all other tags
-            converted = converted.replace(/<(.*)>/g, "");
-            converted = converted.replace(/<\/(.*)>/g, "");
+            converted = converted.replace(/<[^>]+>/g, "");
         }
 
 
