@@ -14,4 +14,5 @@ export declare class html2mrkdwn {
      * @returns converted HTML to Slack Mrkdwn
      */
     static convert(html: string, removeOtherTags: boolean): string;
+    static extractImg(html: string): string[];
 }

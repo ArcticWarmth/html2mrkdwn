@@ -1,6 +1,6 @@
 {
   "name": "html2mrkdwn",
-  "version": "0.2.0-0",
+  "version": "0.2.1-0",
   "description": "Convert HTML code to mrkdwn for Slack messages",
   "main": "lib/cjs/index.js",
   "module": "lib/mjs/index.js",

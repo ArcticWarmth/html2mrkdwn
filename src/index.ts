@@ -6,12 +6,12 @@ export class html2mrkdwn {
      * @hideconstructor
      */
     constructor() {
-        
+
     };
-    
+
     /**
      * Rudimentary method for converting HTML code to mrkdown
-     * 
+     *
      * @static
      * @param html HTML code
      * @param removeOtherTags Remove all tags that are not supported by Slack Mrkdwn
@@ -70,6 +70,15 @@ export class html2mrkdwn {
 
 
         return converted;
+    }
+
+    public static extractImg(html: string): string[] {
+        const imgTags = html.match(/<img [^>]*src="[^"]*"[^>]*>/g) || [];
+        const imgSrcs = imgTags.map(tag => {
+            const match = tag.match(/src="([^"]*)"/);
+            return match ? match[1] : "";
+        });
+        return imgSrcs;
     }
 
 }

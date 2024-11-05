@@ -4,7 +4,7 @@
       "module": "ESNext",  
       "lib": ["ES5", "DOM", "ES2015", "ES2015.Collection"],
       "declaration": true,
-      "outDir": "lib/mjs",                   
+      "outDir": "test/node_modules/html2mrkdwn/lib/mjs",                   
       "strict": false,
       "moduleResolution": "Node",
       "esModuleInterop": true,                  
@@ -13,4 +13,3 @@
     "include": ["src/**/*"],
     "exclude": ["node_modules", "lib"]                        
 }
-  
