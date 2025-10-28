@@ -1,10 +1,12 @@
 # Changelog
 
-## [next]
+## [0.2.2]
 
 ### Added
 
 - add bool for removing tags not supported by mrkdwn
+- add method to extract the image src link
+- updated dependencies
 
 ### Removed
 
