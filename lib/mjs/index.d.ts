@@ -10,7 +10,9 @@ export declare class html2mrkdwn {
      *
      * @static
      * @param html HTML code
+     * @param removeOtherTags Remove all tags that are not supported by Slack Mrkdwn
      * @returns converted HTML to Slack Mrkdwn
      */
-    static convert(html: string): string;
+    static convert(html: string, removeOtherTags: boolean): string;
+    static extractImg(html: string): string[];
 }
