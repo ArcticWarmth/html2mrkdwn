@@ -10,7 +10,7 @@ export class html2mrkdwn {
     };
 
     /**
-     * Rudimentary method for converting HTML code to mrkdown
+     * Parse html code into Slack's mrkdwn language
      *
      * @static
      * @param html HTML code
@@ -19,57 +19,43 @@ export class html2mrkdwn {
      */
     public static convert(html: string, removeOtherTags: boolean): string {
 
-        let converted:string = "";
+        let converted:string = html;
 
+        // Clear non context tags
+        converted = converted.replace(/<\/?(span|div|section|article)[^>]*>/gi, "");
         // Parse <p> tags
-        converted = html.replace(/<p>/g, "");
-        converted = converted.replace(/<\/p>/g, "");
+        converted = converted.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, "$1");
+        //converted = converted.replace(/<\/p>/g, "");
 
         // Parse <br> tags
-        converted = converted.replace(/<br>/g, "\n");
+        converted = converted.replace(/<br[^>]*\/?>/gi, "\n");
 
-        // Parse <b>, <strong>, and <em> tags
-        converted = converted.replace(/<b>/g, "*");
-        converted = converted.replace(/<\/b>/g, "*");
-        converted = converted.replace(/<strong>/g, "*");
-        converted = converted.replace(/<\/strong>/g, "*");
-        converted = converted.replace(/<em>/g, "*");
-        converted = converted.replace(/<\/em>/g, "*");
-
-        // Parse <i> tags
-        converted = converted.replace(/<i>/g, "_");
-        converted = converted.replace(/<\/i>/g, "_");
+        // Parse <b>, <strong>, <i>, and <em> tags
+        converted = converted.replace(/<(strong|b)[^>]*>([\s\S]*?)<\/\1>/gi, "*$2*");
+        converted = converted.replace(/<(em|i)[^>]*>(.*?)<\/\1>/gi, "_$2_");
         
         // Parse <strike> tags
-        converted = converted.replace(/<strike>/g, "~");
-        converted = converted.replace(/<\/strike>/g, "~");
+        converted = converted.replace(/<(strike|s)[^>]*>(.*?)<\/\1>/gi, "~$2~");
 
         // Parse <blockquote> tags
-        converted = converted.replace(/<blockquote>/g, ">");
-        converted = converted.replace(/<\/blockquote>/g, "\n");
+        converted = converted.replace(/<(blockquote|q)[^>]*>(.*?)<\/\1>/gi, "> $2");
 
         // Parse <code> tags
-        converted = converted.replace(/<code>/g, "`");
-        converted = converted.replace(/<\/code>/g, "`");
+        converted = converted.replace(/<pre[^>]*><code[^>]*>([\s\S]*?)<\/code><\/pre>/gi, "`$1`");
 
         // Parse Lists
-        converted = converted.replace(/<ul>/g, "");
-        converted = converted.replace(/<\/ul>/g, "");
-        converted = converted.replace(/<ol>/g, "");
-        converted = converted.replace(/<\/ol>/g, "");
-        converted = converted.replace(/<li>/g, "- ");
-        converted = converted.replace(/<\/li>/g, "\n");
+        converted = converted.replace(/<li[^>]*>([\s\S]*?)<\/li>/gi, "- $1\n");
+        converted = converted.replace(/<\/?[uo]l[^>]*>/gi, "\n");
 
         // Parse Links
-        converted = converted.replace(/<a href="(.*)">(.*)<\/a>/g, "<$1|$2>");
+        converted = converted.replace(/<a[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/gi, "<$1|$2>");
 
         if(removeOtherTags) {
             // Remove all other tags
             converted = converted.replace(/<[^>]+>/g, "");
         }
 
-
-        return converted;
+        return converted.trim();
     }
 
     public static extractImg(html: string): string[] {

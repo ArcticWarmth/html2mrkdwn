@@ -1,6 +1,6 @@
 {
   "name": "html2mrkdwn",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Convert HTML code to mrkdwn for Slack messages",
   "main": "lib/cjs/index.js",
   "module": "lib/mjs/index.js",
@@ -29,7 +29,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.13.0",
     "@typescript-eslint/parser": "^6.13.0",
-    "typescript": "^5.2.2",
-    "eslint": "^8.54.0"
+    "eslint": "^8.54.0",
+    "typescript": "^5.2.2"
   }
 }
