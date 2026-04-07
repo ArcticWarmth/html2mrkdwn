@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "rm -rf lib/* && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
-    "package": "npm pack"
+    "package": "pnpm pack"
   },
   "bugs": {
     "url": "https://github.com/ArcticWarmth/html2mrkdwn/issues"
