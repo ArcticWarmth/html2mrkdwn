@@ -1,12 +1,12 @@
 {
     "compilerOptions": {
-      "target": "es5",                          
-      "module": "ESNext",  
-      "lib": ["ES5", "DOM", "ES2015", "ES2015.Collection"],
+      "target": "es6",                          
+      "module": "node16",  
       "declaration": true,
+      "rootDir": ".",
       "outDir": "lib/mjs",                   
       "strict": false,
-      "moduleResolution": "Node",
+      "moduleResolution": "node16",
       "esModuleInterop": true,                  
       "forceConsistentCasingInFileNames": true  
     },
