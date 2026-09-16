@@ -9,7 +9,7 @@ To install with NPM run
 
 ## Usage
 
-The parser is contained within the static `convert()` method. Two examples are showen below with both usage in es5 and CommonJS.
+The parser is contained within the static `convert()` method. Two examples are shown below with both usage in es5 and CommonJS.
 
 ### Examples
 

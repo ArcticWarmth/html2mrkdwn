@@ -1,10 +1,18 @@
 {
   "name": "html2mrkdwn",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Convert HTML code to mrkdwn for Slack messages",
+  "type": "module",
   "main": "lib/cjs/index.js",
   "module": "lib/mjs/index.js",
-  "types": "lib/cjs/index.d.ts",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/mjs/index.js",
+      "require": "./lib/cjs/index.js"
+    }
+  },
   "files": [
     "lib"
   ],
@@ -13,8 +21,11 @@
     "url": "git+https://github.com/ArcticWarmth/html2mrkdwn.git"
   },
   "scripts": {
-    "build": "rm -rf lib/* && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
-    "package": "npm pack"
+    "clean": "rm -r lib/*",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build": "pnpm run clean && pnpm run build:esm && pnpm run build:cjs",
+    "package": "pnpm pack"
   },
   "bugs": {
     "url": "https://github.com/ArcticWarmth/html2mrkdwn/issues"
@@ -27,9 +38,10 @@
   "author": "ArcticWarmth",
   "license": "MIT",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "eslint": "^8.57.1",
-    "typescript": "^5.9.3"
-  }
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.10.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.70.0"
+  },
+  "packageManager": "pnpm@12.4.2"
 }
